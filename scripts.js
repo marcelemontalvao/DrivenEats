@@ -68,4 +68,7 @@ function finalizarPedido() {
   - Sobremesa: ${sobremesa}
   Total: R$ ${totalPedido}
   `;
+  mensagem = encodeURIComponent(mensagem);
+  let link = `https://wa.me/5571988918934?text=${mensagem}`;
+  document.querySelector("a").href = link;
 }
