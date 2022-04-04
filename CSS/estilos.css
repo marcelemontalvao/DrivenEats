@@ -134,7 +134,7 @@ body {
   left: 0;
 }
 
-.barra > div {
+.barra > button {
   background: #cbcbcb;
   border-radius: 50px;
   width: 364px;
@@ -144,15 +144,11 @@ body {
   align-items: center;
   font-size: 20px;
   cursor: pointer;
+  border: none;
 }
 
-.barra > div > p {
+.barra > button > p {
   color: #ffffff;
   font-size: 20px;
-}
-
-a {
-  text-decoration: none;
-  color: #ffffff;
 }
 

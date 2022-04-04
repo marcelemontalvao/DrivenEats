@@ -52,9 +52,10 @@ function selecionarSobremesa(elemento) {
 
 function habilitaBotao() {
   if (prato != null && bebida != null && sobremesa != null) {
-    const botaoFinalizar = document.querySelector(".barra > div");
+    const botaoFinalizar = document.querySelector(".barra > button");
     botaoFinalizar.style.backgroundColor = "#32B72F";
     botaoFinalizar.querySelector("p").textContent = "Finalizar pedido";
+    botaoFinalizar.disabled = false;
   }
 }
 
@@ -70,5 +71,5 @@ function finalizarPedido() {
   `;
   mensagem = encodeURIComponent(mensagem);
   let link = `https://wa.me/5571988918934?text=${mensagem}`;
-  document.querySelector("a").href = link;
+  window.open (link)
 }
