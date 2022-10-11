@@ -1,5 +1,8 @@
 function selectItems(section) {
     const cards = document.querySelectorAll(`.${section}`);
+    let icon = document.createElement("ion-icon")
+    icon.name = "checkmark-circle";
+    icon.style.color = "#32B72F"
     cards.forEach(card => {
     
         card.addEventListener("click", ()=> {
@@ -13,8 +16,10 @@ function selectItems(section) {
                 card.classList.remove("active")
             } else {
                 card.classList.add("active");
+                card.append(icon);
             }
             handleButton()
+
         })
     })
 }

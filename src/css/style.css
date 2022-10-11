@@ -69,6 +69,7 @@ section > span {
     gap: 6px;
     padding: 14px;
     font-size: 16px;
+    position: relative;
 }
 
 .card img {
@@ -85,6 +86,14 @@ section > span {
     color: #A6A6A6;
     font-weight: 300;
     font-size: 15px;
+}
+
+.card ion-icon {
+    color: transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
 }
 
 footer {
