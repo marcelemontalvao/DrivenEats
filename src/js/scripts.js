@@ -14,11 +14,22 @@ function selectItems(section) {
             } else {
                 card.classList.add("active");
             }
-           
+            handleButton()
         })
     })
 }
-
+ 
+function handleButton() {
+    const actives = document.querySelectorAll(".active");
+    const button = document.querySelector(".finish");
+    if(actives.length == 3) {
+        button.style.backgroundColor = "#32B72F";
+        button.disabled = false;
+        button.style.cursor = "pointer";
+        button.textContent = "Fechar pedido";
+    }
+}
+ 
 selectItems("food");
 selectItems("drink");
 selectItems("dessert");
