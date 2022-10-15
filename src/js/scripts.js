@@ -1,42 +1,41 @@
 function createCards(object) {
     const li = document.createElement("li");
-    if(object.type == "dishes") {
+    if(object.type === "dishes") {
         li.classList.add("card", "dishes");
-    } else if (object.type == "drink") {
+    } else if (object.type === "drink") {
         li.classList.add("card", "drink");
     }else {
         li.classList.add("card", "dessert");
     }
-    li.setAttribute("data-test", "food-option")
-    const img = document.createElement("img")
+    li.setAttribute("data-test", "food-option");
+    const img = document.createElement("img");
     img.src = object.image;
 
     const title = document.createElement("h2");
     title.innerText = object.title;
-    title.setAttribute("data-test", "food-title")
+    title.setAttribute("data-test", "food-title");
 
-    const description = document.createElement("span")
+    const description = document.createElement("span");
     description.innerText = object.description;
 
-    const price = document.createElement("p")
+    const price = document.createElement("p");
     price.classList.add("price");
-    price.innerText = object.price
-    price.setAttribute("data-test", "food-title")
-    
+    price.innerText = object.price;
+    price.setAttribute("data-test", "food-title");
     li.append(img,title,description,price);
 
     return li;
 }
 
 function renderCards(array) {
-    const ulDishes = document.querySelector(".dishesUl")
-    const ulDrink = document.querySelector(".drinkUl")
-    const ulDessert = document.querySelector(".dessertUl")
+    const ulDishes = document.querySelector(".dishesUl");
+    const ulDrink = document.querySelector(".drinkUl");
+    const ulDessert = document.querySelector(".dessertUl");
 
     array.forEach(element => {
-        if(element.type == "dishes") {
+        if(element.type === "dishes") {
             ulDishes.append(createCards(element));
-        } else if (element.type == "drink") {
+        } else if (element.type === "drink") {
             ulDrink.append(createCards(element));
         } else {
             ulDessert.append(createCards(element));
@@ -46,9 +45,9 @@ function renderCards(array) {
 
 function totalPrice(){
     let sum = 0;
-    let prices = document.querySelectorAll(".active .price")
+    let prices = document.querySelectorAll(".active .price");
     prices.forEach(price => {
-        price = price.textContent.toString()
+        price = price.textContent.toString();
         price = price.split("R$ ",2);
         price = price[1].replace(/[^\d,]+/g,''); 
         price = price.replace(',', '.'); 
@@ -60,7 +59,7 @@ function totalPrice(){
 
 function selectItems(section) {
     const cards = document.querySelectorAll(`.${section}`);
-    let icon = document.createElement("ion-icon")
+    let icon = document.createElement("ion-icon");
     icon.name = "checkmark-circle";
     cards.forEach(card => {
 
@@ -69,7 +68,7 @@ function selectItems(section) {
             const selected = document.querySelectorAll(`.${section}`);
             selected.forEach(element => {  
                 if(element.classList.contains("active") && element != card) {
-                    element.classList.remove("active")
+                    element.classList.remove("active");
                     card.append(icon); 
                     icon.style.color = "transparent";    
                 }
@@ -78,26 +77,37 @@ function selectItems(section) {
             if(card.classList.contains("active")) {
                 card.classList.remove("active");
                 card.append(icon); 
-                icon.style.color = "transparent"    
+                icon.style.color = "transparent";  
+                handleButton(); 
             } else {
                 card.classList.add("active");
                 card.append(icon); 
-                icon.style.color = "#32B72F"                     
+                icon.style.color = "#32B72F";
+                handleButton();                     
             }
-            
-           handleButton();
         })
+        
     })
 }
 
 function handleButton() {
     const actives = document.querySelectorAll(".active");
+    console.log(actives);
+    console.log(actives.length);
     const button = document.querySelector(".finish");
     if(actives.length == 3) {
         button.style.backgroundColor = "#32B72F";
         button.disabled = false;
         button.style.cursor = "pointer";
         button.textContent = "Fechar pedido";
+    } else {
+        button.style.backgroundColor = "#CBCBCB";
+        button.disabled = true;
+        button.style.cursor = "pointer";
+        button.innerHTML = `
+        <span>Selecione os 3 itens</span>
+        <span>para fechar o pedido</span>
+        `;
     }
 }
 
@@ -105,19 +115,19 @@ function getNames() {
     const cardDishes = document.querySelector(".dishes.active h2").innerText;
     const cardDrink = document.querySelector(".drink.active h2").innerText;
     const cardDessert = document.querySelector(".dessert.active h2").innerText;
-    return {cardDishes, cardDrink, cardDessert}
+    return {cardDishes, cardDrink, cardDessert};
 }
 
 function getPrices() {
     const priceDishes = document.querySelector(".dishes.active .price").innerText;
     const priceDrink = document.querySelector(".drink.active .price").innerText;
     const priceDessert = document.querySelector(".dessert.active .price").innerText;
-    return {priceDishes, priceDrink, priceDessert}
+    return {priceDishes, priceDrink, priceDessert};
 }
 
 function createMessage() {
     const name = prompt("Qual o seu nome?");
-    const address = prompt("Qual o seu endereço?") 
+    const address = prompt("Qual o seu endereço?"); 
     const total = totalPrice();
     const {cardDishes, cardDrink, cardDessert} = getNames();
     let message = ` 
@@ -134,7 +144,7 @@ function createMessage() {
     return {message, name, address};
 }
 
-renderCards(products)
+renderCards(products);
 selectItems("dishes");
 selectItems("drink");
 selectItems("dessert");

@@ -1,6 +1,6 @@
-const btnModal = document.getElementById("btn-modal")
-const btnClose = document.getElementById("btn-close-modal")
-const btnWhatsapp = document.getElementById("btn-whatsapp")
+const btnModal = document.getElementById("btn-modal");
+const btnClose = document.getElementById("btn-close-modal");
+const btnWhatsapp = document.getElementById("btn-whatsapp");
 
 const createModalMessage = () => {
     const {cardDishes, cardDrink, cardDessert} = getNames();
@@ -15,26 +15,26 @@ const createModalMessage = () => {
     spanNameDishes.classList.add("name-dishes");
     spanNameDishes.innerText = `${cardDishes}`
     const spanPriceDishes = document.createElement("span");
-    spanPriceDishes.innerText = `${priceDishes}`
+    spanPriceDishes.innerText = `${priceDishes}`;
 
     const divDrink = document.createElement("div");
     const spanNameDrink = document.createElement("span");
     spanNameDrink.classList.add("name-drink");
-    spanNameDrink.innerText = `${cardDrink}`
+    spanNameDrink.innerText = `${cardDrink}`;
     const spanPriceDrink = document.createElement("span");
-    spanPriceDrink.innerText = `${priceDrink}`
+    spanPriceDrink.innerText = `${priceDrink}`;
 
     const divDessert = document.createElement("div");
     const spanNameDessert = document.createElement("span");
     spanNameDessert.classList.add("name-dessert");
-    spanNameDessert.innerText = `${cardDessert}`
+    spanNameDessert.innerText = `${cardDessert}`;
     const spanPriceDessert = document.createElement("span");
-    spanPriceDessert.innerText = `${priceDessert}`
+    spanPriceDessert.innerText = `${priceDessert}`;
 
-    const divTotal = document.createElement("div")
+    const divTotal = document.createElement("div");
     divTotal.classList.add("total");
     const spanNameTotal = document.createElement("span");
-    spanNameTotal.innerText = "TOTAL"
+    spanNameTotal.innerText = "TOTAL";
     const spanPriceTotal = document.createElement("span");
     spanPriceTotal.innerText = totalprice;
    
@@ -56,12 +56,12 @@ btnModal.addEventListener("click", () => {
             const url = `https://wa.me/5571988918934?text=${message}`
             window.open(url);
         } else {
-            alert("Nome ou endereço inválidos")
+            alert("Nome ou endereço inválidos");
         }
     })
 })
 
 btnClose.addEventListener("click", () => {
-    const modal = document.querySelector(".container-modal")
+    const modal = document.querySelector(".container-modal");
     modal.style.display = "none";
 })
