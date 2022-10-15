@@ -53,10 +53,6 @@ section > span {
     overflow-x: scroll;
 }
 
-.cards::-webkit-scrollbar {
-    display: none;
-}
-
 .card {
     border: 5px solid transparent;
     width: 11rem;
@@ -131,9 +127,9 @@ footer button {
     border: 5px solid #32B72F;
 }
 
-@media(min-width: 935px) {
+@media(max-width: 375px) {
     .cards::-webkit-scrollbar {
-        display: block;
+        display: none;
     }
     
 }

@@ -71,7 +71,7 @@ function selectItems(section) {
                 if(element.classList.contains("active") && element != card) {
                     element.classList.remove("active")
                     card.append(icon); 
-                    icon.style.color = "transparent"    
+                    icon.style.color = "transparent";    
                 }
             })
 
@@ -82,9 +82,10 @@ function selectItems(section) {
             } else {
                 card.classList.add("active");
                 card.append(icon); 
-                icon.style.color = "#32B72F"               
+                icon.style.color = "#32B72F"                     
             }
-            handleButton();
+            
+           handleButton();
         })
     })
 }
