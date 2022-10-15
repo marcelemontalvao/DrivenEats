@@ -36,7 +36,7 @@ header span {
 
 .container {
     margin-top: 7rem;
-    margin-bottom: 7rem;
+    padding-bottom: 7rem;
     padding-left: 21px;
     display: flex;
     flex-direction: column;

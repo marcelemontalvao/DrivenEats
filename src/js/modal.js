@@ -3,18 +3,19 @@ const btnClose = document.getElementById("btn-close-modal")
 const btnWhatsapp = document.getElementById("btn-whatsapp")
 
 const createModalMessage = () => {
-    const {cardFood, cardDrink, cardDessert} = getNames();
-    const {priceFood, priceDrink, priceDessert} = getPrices();
+    const {cardDishes, cardDrink, cardDessert} = getNames();
+    const {priceDishes, priceDrink, priceDessert} = getPrices();
     const totalprice = totalPrice();
 
     const divInfo = document.querySelector(".infos-modal");
+    divInfo.innerText = "";
 
-    const divFood = document.createElement("div");
-    const spanNameFood = document.createElement("span");
-    spanNameFood.classList.add("name-food");
-    spanNameFood.innerText = `${cardFood}`
-    const spanPriceFood = document.createElement("span");
-    spanPriceFood.innerText = `${priceFood}`
+    const divDishes = document.createElement("div");
+    const spanNameDishes = document.createElement("span");
+    spanNameDishes.classList.add("name-dishes");
+    spanNameDishes.innerText = `${cardDishes}`
+    const spanPriceDishes = document.createElement("span");
+    spanPriceDishes.innerText = `${priceDishes}`
 
     const divDrink = document.createElement("div");
     const spanNameDrink = document.createElement("span");
@@ -38,11 +39,11 @@ const createModalMessage = () => {
     spanPriceTotal.innerText = totalprice;
    
     
-    divFood.append(spanNameFood,spanPriceFood);
+    divDishes.append(spanNameDishes,spanPriceDishes);
     divDrink.append(spanNameDrink,spanPriceDrink);
     divDessert.append(spanNameDessert, spanPriceDessert);
     divTotal.append(spanNameTotal, spanPriceTotal);
-    divInfo.append(divFood, divDrink, divDessert, divTotal);
+    divInfo.append(divDishes, divDrink, divDessert, divTotal);
 }
 
 btnModal.addEventListener("click", () => {

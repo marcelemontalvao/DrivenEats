@@ -4,7 +4,7 @@ const products = [
         title: "Acarajé",
         description: "Feijão-fradinho frito em azeite de dendê.",
         price: "R$ 13,90",
-        type: "food",
+        type: "dishes",
     },
     {
         image:  "./src/assets/brigadeiro.webp",
@@ -18,14 +18,14 @@ const products = [
         title: "Pizza de Frango com Catupiry",
         description: "Frango desfiado, milho e catupiry",
         price: "R$ 43,90",
-        type: "food",
+        type: "dishes",
     },
     {
         image:  "./src/assets/vatapa.jpg",
         title: "Vatapá",
         description: "Pão molhado e farinha de rosca",
         price: "R$ 13,90",
-        type: "food",
+        type: "dishes",
     },
     {
         image:  "./src/assets/mugunza.jpeg",
@@ -46,7 +46,7 @@ const products = [
         title: "Frango Yin Yang",
         description: "Um pouco de batata, um pouco de salada",
         price: "R$ 13,90",
-        type: "food",
+        type: "dishes",
     },
     {
         image:  "./src/assets/milkshake.jpeg",
@@ -81,7 +81,7 @@ const products = [
         title: "Pizza de Marguerita",
         description: "Muçarela, tomate e manjericão.",
         price: "R$ 31,99",
-        type: "food",
+        type: "dishes",
     },
     {
         image:  "./src/assets/pizza-de-romeu-e-julieta.webp",
@@ -95,7 +95,7 @@ const products = [
         title: "Pizza de Calabresa",
         description: "Queijo muçarela, tomate, calabresa.",
         price: "R$ 31,99",
-        type: "food",
+        type: "dishes",
     },
     {
         image:  "./src/assets/pave-de-chocolate.webp",

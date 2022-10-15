@@ -15,29 +15,29 @@
         <span>Sua comida em 6 minutos</span>
     </header>
     <div class="container">
-        <section>
+        <section data-test="dishes">
             <span>Primeiro, seu prato</span>
-            <ul class="cards foodUl">
+            <ul class="cards dishesUl">
             </ul>
         </section>
-        <section>
+        <section data-test="drinks">
             <span>Agora, sua bebida</span>
             <ul class="cards drinkUl">
             </ul>
         </section>
-        <section>
+        <section data-test="desserts">
             <span>Por fim, sua sobremesa</span>
             <ul class="cards dessertUl">
             </ul>
         </section>
         <footer>
-            <button class="finish" id="btn-modal" disabled>
+            <button class="finish" id="btn-modal" data-test="finish-button" disabled>
                 <span>Selecione os 3 itens</span>
                 <span>para fechar o pedido</span>
             </button>
         </footer>
         <div class="container-modal">
-            <section class="modal">
+            <section class="modal" data-test="confirmation-dialog">
                 <p>Confirme seu pedido</span>
                 <div class="infos-modal"></div>
                 <button id="btn-whatsapp">Tudo certo, pode pedir!</button>

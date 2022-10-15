@@ -1,18 +1,19 @@
 function createCards(object) {
     const li = document.createElement("li");
-    if(object.type == "food") {
-        li.classList.add("card", "food");
+    if(object.type == "dishes") {
+        li.classList.add("card", "dishes");
     } else if (object.type == "drink") {
         li.classList.add("card", "drink");
     }else {
         li.classList.add("card", "dessert");
     }
-
+    li.setAttribute("data-test", "food-option")
     const img = document.createElement("img")
     img.src = object.image;
 
     const title = document.createElement("h2");
     title.innerText = object.title;
+    title.setAttribute("data-test", "food-title")
 
     const description = document.createElement("span")
     description.innerText = object.description;
@@ -20,6 +21,7 @@ function createCards(object) {
     const price = document.createElement("p")
     price.classList.add("price");
     price.innerText = object.price
+    price.setAttribute("data-test", "food-title")
     
     li.append(img,title,description,price);
 
@@ -27,13 +29,13 @@ function createCards(object) {
 }
 
 function renderCards(array) {
-    const ulFood = document.querySelector(".foodUl")
+    const ulDishes = document.querySelector(".dishesUl")
     const ulDrink = document.querySelector(".drinkUl")
     const ulDessert = document.querySelector(".dessertUl")
 
     array.forEach(element => {
-        if(element.type == "food") {
-            ulFood.append(createCards(element));
+        if(element.type == "dishes") {
+            ulDishes.append(createCards(element));
         } else if (element.type == "drink") {
             ulDrink.append(createCards(element));
         } else {
@@ -60,7 +62,6 @@ function selectItems(section) {
     const cards = document.querySelectorAll(`.${section}`);
     let icon = document.createElement("ion-icon")
     icon.name = "checkmark-circle";
-    icon.style.color = "#32B72F"
     cards.forEach(card => {
 
         card.addEventListener("click", ()=> {
@@ -69,14 +70,19 @@ function selectItems(section) {
             selected.forEach(element => {  
                 if(element.classList.contains("active") && element != card) {
                     element.classList.remove("active")
+                    card.append(icon); 
+                    icon.style.color = "transparent"    
                 }
             })
 
             if(card.classList.contains("active")) {
                 card.classList.remove("active");
+                card.append(icon); 
+                icon.style.color = "transparent"    
             } else {
                 card.classList.add("active");
-                card.append(icon);                
+                card.append(icon); 
+                icon.style.color = "#32B72F"               
             }
             handleButton();
         })
@@ -95,39 +101,39 @@ function handleButton() {
 }
 
 function getNames() {
-    const cardFood = document.querySelector(".food.active h2").innerText;
+    const cardDishes = document.querySelector(".dishes.active h2").innerText;
     const cardDrink = document.querySelector(".drink.active h2").innerText;
     const cardDessert = document.querySelector(".dessert.active h2").innerText;
-    return {cardFood, cardDrink, cardDessert}
+    return {cardDishes, cardDrink, cardDessert}
 }
 
 function getPrices() {
-    const priceFood = document.querySelector(".food.active .price").innerText;
+    const priceDishes = document.querySelector(".dishes.active .price").innerText;
     const priceDrink = document.querySelector(".drink.active .price").innerText;
     const priceDessert = document.querySelector(".dessert.active .price").innerText;
-    return {priceFood, priceDrink, priceDessert}
+    return {priceDishes, priceDrink, priceDessert}
 }
 
 function createMessage() {
     const name = prompt("Qual o seu nome?");
     const address = prompt("Qual o seu endereço?") 
     const total = totalPrice();
-    const {cardFood, cardDrink, cardDessert} = getNames();
-    let message = ` Olá, gostaria de fazer o pedido:
-        - Prato: ${cardFood}
-        - Bebida: ${cardDrink}
-        - Sobremesa: ${cardDessert}
-        Total: ${total}
+    const {cardDishes, cardDrink, cardDessert} = getNames();
+    let message = ` 
+    Olá, gostaria de fazer o pedido:
+    - Prato: ${cardDishes}
+    - Bebida: ${cardDrink}
+    - Sobremesa: ${cardDessert}
+    Total: ${total}
 
-        Nome: ${name}
-        Endereço: ${address}
+    Nome: ${name}
+    Endereço: ${address}
     ` 
     message = encodeURIComponent(message); 
     return {message, name, address};
 }
 
 renderCards(products)
-selectItems("food");
+selectItems("dishes");
 selectItems("drink");
 selectItems("dessert");
-
